@@ -19,13 +19,13 @@ update_phi_gpbart <- function(tree,
                 # phi_proposal <- stats::runif(n = 1,min = (3/4)*phi_vector_p[i],max = (4/3)*phi_vector_p[i])
 
                 # Setting a proposal given by the list element "proposal phi"
-                if(prior_phi[["proposal_mode"]]=="discrete_grid"){
+                if(proposal_phi[["proposal_mode"]]=="discrete_grid"){
                         if(is.null(prior_phi[["grid"]])){
-                                phi_proposal <- sample(c(seq(0,20,by=0.5)[-1],75,100,125),size = 1)
+                                phi_proposal <- sample(c(0.1,seq(0,10,by=0.5)[-1],seq(10,20,by = 1), 25,30,50,75,100,125),size = 1)
                         } else {
                                 phi_proposal <- sample(proposal_phi[["grid"]],size = 1)
                         }
-                } else if(prior_phi[["proposal_mode"]]=="sliding_window"){
+                } else if(proposal_phi[["proposal_mode"]]=="sliding_window"){
                         phi_proposal <- stats::runif(n = 1,min = (3/4)*phi_vector_p[i],max = (4/3)*phi_vector_p[i])
                 } else {
                         stop("Insert a valid proposal_mode")
@@ -45,7 +45,7 @@ update_phi_gpbart <- function(tree,
                 # Transition loglikelihood
                 # transition_log <- stats::dunif(x = phi_vector_p[i],min = (3/4)*phi_proposal,max = (4/3)*phi_proposal,log = TRUE) - stats::dunif(x = phi_proposal,min = (3/4)*phi_vector_p[i],max = (4/3)*phi_vector_p[i],log = TRUE)
 
-                if(prior_phi[["proposal_mode"]] == "sliding_window"){
+                if(proposal_phi[["proposal_mode"]] == "sliding_window"){
                         transition_log <- stats::dunif(x = phi_vector_p[i],min = (3/4)*phi_proposal,max = (4/3)*phi_proposal,log = TRUE) - stats::dunif(x = phi_proposal,min = (3/4)*phi_vector_p[i],max = (4/3)*phi_vector_p[i],log = TRUE)
                 }
                 # prior_log <- ((stats::dgamma(x = phi_proposal,shape = 0.1,rate = 1,log = TRUE)+stats::dgamma(x = phi_proposal,shape = 20,rate = 1,log = TRUE))-(stats::dgamma(x = phi_vector_p[i],shape = 0.1,rate = 1,log = TRUE)+stats::dgamma(x = phi_vector_p[i],shape = 20,rate = 1,log = TRUE)))
@@ -67,7 +67,7 @@ update_phi_gpbart <- function(tree,
 
 
                 # Calculating acceptance
-                if(prior_phi[["proposal_mode"]]=="sliding_window"){
+                if(proposal_phi[["proposal_mode"]]=="sliding_window"){
                         acceptance <- exp(new_log_like-old_log_like + prior_log + transition_log ) #+ stats::dgamma(x = phi_proposal,shape = 5,rate = 1,log = TRUE) - stats::dgamma(x = phi_vector_p[i],shape = 5,rate = 1,log = TRUE) )
                 } else {
                         acceptance <- exp(new_log_like-old_log_like + prior_log ) #+ stats::dgamma(x = phi_proposal,shape = 5,rate = 1,log = TRUE) - stats::dgamma(x = phi_vector_p[i],shape = 5,rate = 1,log = TRUE) )

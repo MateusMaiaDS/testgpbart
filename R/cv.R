@@ -2,7 +2,6 @@
 #' @export
 k_fold <- function(data,dependent_variable="y",k_partitions,seed=NULL,as_data_frame = FALSE){
 
-
      # Setting the seed.
      set.seed(seed)
 
@@ -38,6 +37,8 @@ k_fold <- function(data,dependent_variable="y",k_partitions,seed=NULL,as_data_fr
 
                # Test
                x_test = as.matrix(data[partitions_index==k,colnames(data)!="y",drop=FALSE]) #%>% as.matrix
+               y_test = as.matrix(data[partitions_index==k,colnames(data)=="y",drop=FALSE]) #%>% as.matrix
+
           }
 
           # Saving the data split

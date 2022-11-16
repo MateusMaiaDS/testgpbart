@@ -21,15 +21,15 @@ gp_bart <- function(x_train,
                  bart_boolean = FALSE,
                  keeptrees = FALSE,
                  bart_warmup = 250,
-                 x_scale = FALSE,
-                 update_nu = TRUE,
+                 x_scale = TRUE,
+                 update_nu = FALSE,
                  store_verb = TRUE,
                  gp_variables_,
                  rotation_variables_ = NULL,
                  cat_var_ = NULL,
-                 prior_phi_ = list(proposal_mode = "discrete_grid", grid = NULL),
-                 proposal_phi_ = list(type = NULL,prob_1 = NULL, prob_2 = NULL, shape_1 = NULL, shape_2 = NULL,
-                                      rate_1 = NULL, rate_2 = NULL)){
+                 prior_phi_ = list(type = NULL,prob_1 = NULL, prob_2 = NULL, shape_1 = NULL, shape_2 = NULL,
+                                   rate_1 = NULL, rate_2 = NULL),
+                 proposal_phi_ = list(proposal_mode = "discrete_grid", grid = NULL)){
 
 
         # Verifying if x_train and x_test are matrices
