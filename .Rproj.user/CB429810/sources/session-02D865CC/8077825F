@@ -1,0 +1,26 @@
+{
+    "id": "8077825F",
+    "path": "~/Documents/adding_new_folder_file/manipulating_gpbart/testgpbart/R/gpbart.R",
+    "project_path": "R/gpbart.R",
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1668555423793.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "1,24",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1668555430,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1668555430360,
+    "read_only": false,
+    "read_only_alternatives": []
+}

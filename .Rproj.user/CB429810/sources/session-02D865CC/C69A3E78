@@ -1,0 +1,27 @@
+{
+    "id": "C69A3E78",
+    "path": "~/Documents/adding_new_folder_file/manipulating_gpbart/testgpbart/R/cv.R",
+    "project_path": "R/cv.R",
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1668555581422.0,
+    "source_on_save": false,
+    "relative_order": 4,
+    "properties": {
+        "tempName": "Untitled1",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "88,7",
+        "scrollLine": "79"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1668559962,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1668559962194,
+    "read_only": false,
+    "read_only_alternatives": []
+}
