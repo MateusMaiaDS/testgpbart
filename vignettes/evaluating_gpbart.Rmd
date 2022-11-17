@@ -126,3 +126,31 @@ swmud
 petrel
 precip
 ```
+
+
+
+### Evaluating the results
+
+In order to check the model's performance we can calculate the RMSE and the CRPS, the example below show how to calculate for each one of them.
+
+
+```{r, eval = FALSE} 
+# Calculating the RMSE
+rmse(obs = y_test,pred = colMeans(gp_bart_mod$y_test_hat_post))
+
+# Calcusting the CRPS
+crps(y = y_test,means = colMeans(gp_bart_mod$y_test_hat_post),
+     sds = rep(mean(gp_bart_mod$tau_post[(gp_bart_mod$prior$n_burn+1):
+                                              gp_bart_mod$prior$n_mcmc])^(-1/2),
+               length(y_test)))$CRPS
+
+```
+
+
+Analyze other parameters can be also meaningful and relevant to get a proper diagnostic of the model. To get that we can do some trace plot of the model, or analyze the behavior of any length parameter of a tree.
+
+```{r, eval = FALSE}
+# Doing a trace plot for \tau
+plot(gp_bart_mod$tau_post, type = "l", ylab = "tau", xlab = "n_iter",
+     main = "Posterior distributionf of tau")
+
