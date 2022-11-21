@@ -12,15 +12,13 @@ update_phi_gpbart <- function(tree,
         # Getting terminal nodes
         t_nodes <- get_terminals(tree)
 
-
-
         for(i in 1:length(phi_vector_p)){
                 # phi_proposal <- sample(x = 1/(2*pi*up_crossings),size = 1)
                 # phi_proposal <- stats::runif(n = 1,min = (3/4)*phi_vector_p[i],max = (4/3)*phi_vector_p[i])
 
                 # Setting a proposal given by the list element "proposal phi"
                 if(proposal_phi[["proposal_mode"]]=="discrete_grid"){
-                        if(is.null(prior_phi[["grid"]])){
+                        if(is.null(proposal_phi[["grid"]])){
                                 phi_proposal <- sample(c(0.1,seq(0,10,by=0.5)[-1],seq(10,20,by = 1), 25,30,50,75,100,125),size = 1)
                         } else {
                                 phi_proposal <- sample(proposal_phi[["grid"]],size = 1)
