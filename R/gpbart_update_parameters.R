@@ -53,7 +53,7 @@ update_phi_gpbart <- function(tree,
                 # Calculating the prior log value
                 if(is.null(prior_phi[["type"]])){
                          prior_log <- log(0.7*stats::dgamma(x = phi_proposal,shape = 10000,rate = 100)+0.3*stats::dgamma(x = phi_proposal,shape = 1.5,rate = 0.2))-log(0.7*stats::dgamma(x = phi_vector_p[i],shape = 10000,rate = 100)+0.3*stats::dgamma(x = phi_vector_p[i],shape = 1.5,rate = 0.2))
-                } else if(prior_phi[["gamma_mixture"]]){
+                } else if(prior_phi[["type"]]=="gamma_mixture"){
                         if(any(is.null(prior_phi$prob_1),is.null(prior_phi$prob_2),is.null(prior_phi$shape_1),is.null(prior_phi$shape_2),is.null(prior_phi$rate_1),is.null(prior_phi$rate_2)) ){
                                 stop("Insert valid prior parameters")
                         } else {
